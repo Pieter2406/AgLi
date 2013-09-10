@@ -65,10 +65,41 @@ public class NewCalendar {
 	
 	/**
 	 * 
+	 * @param entry
 	 */
 	public void DelEntry(AgEntry entry){
-		GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).remove(entry);
-		this.deletedEntries.add(entry);
+		if(ContainsEntry(entry)){
+			GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).remove(entry);
+			this.allEntries.remove(entry);
+			this.deletedEntries.add(entry);
+		}
 	}
 	
+	/**
+	 * 
+	 * @param entry
+	 */
+	public void RestoreEntry(AgEntry entry){
+		if(!this.deletedEntries.contains(entry)){
+			System.out.println("Invalid entry");
+		}else{
+			AddEntry(entry);
+			System.out.println("Entry restored");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param entry
+	 * @return
+	 */
+	private boolean ContainsEntry(AgEntry entry){
+		if(!this.allEntries.contains(entry)){
+			return false;
+		}else if(!GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).contains(entry)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

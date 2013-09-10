@@ -7,7 +7,7 @@ vb:
 Andere notaties mogelijk:
 	27.10 // 27-10 // 27/10 // 27:10
 	
-	Formaat: DD:MM:JJJJ // DD/MM/JJJJ // DD.MM.JJJJ // DD-MM-JJJJ
+Formaat: DD:MM:JJJJ // DD/MM/JJJJ // DD.MM.JJJJ // DD-MM-JJJJ
 
 andere opties:
 	* Kalender weergave
