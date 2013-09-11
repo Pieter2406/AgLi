@@ -16,7 +16,10 @@ public class NewDate implements Comparable {
 		this.month = getMonthOf(this.date.getMonth());
 		this.year = this.date.getYear();
 	}
-
+	
+	public NewDate(){
+		this(0);
+	}
 	/**
 	 * @return the day
 	 */

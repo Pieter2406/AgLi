@@ -22,37 +22,45 @@ public class AgEntry {
 	 * The content of the entry.
 	 */
 	private String content;
+	
 	/**
-	 * Initializes an agenda entry with a given date, subject and the content of the agenda entry
+	 * The priority of this entry as a number from 1 to 10 where 10 is the highest
+	 * priority and 1 the lowest.
+	 */
+	private int priority;
+	
+	/**
+	 * Initializes an agenda entry with a given date, subject,the content of the agenda entry and 
+	 * a given priority.
 	 * @param date	A given day with or without a given month and with or without a given year.
 	 * @param subject	The subject of the agenda entry.
 	 * @param content	The content of the agenda entry.
+	 * @param priority	The priority of the agenda entry from a scale of 1 to 10.
 	 */
-	public AgEntry(NewDate date, String subject, String content) {
+	public AgEntry(NewDate date, String subject, String content, int priority) {
 		this.date = date;
 		this.subject = subject;
 		this.content = content;
+		this.priority = priority;
 	}
 	
 	/**
-	 * Initializes an agenda entry with a given date, an empty subject and the content of the agenda entry.
+	 * Initializes an agenda entry with a given date, an empty subject, the content of the agenda entry and a priority of 1.
 	 * @param date		A given day with or without a given month and with or without a given year.
 	 * @param content	The content of the agenda entry.
 	 */
 	
 	public AgEntry(NewDate date, String content){
-		this(date,"",content);
+		this(date,"",content,1);
 	}
 	
 	/**
-	 * Initializes an agenda entry with a given content. The date is set to the current date of making.
-	 * @param content	The content of the agenda entry.
+	 * Initializes an AgEntry with an input stream.
+	 * @param inputStream
 	 */
-	public AgEntry(String content){
-		this.content = content;
-		this.date = new NewDate(Calendar.DATE);
+	public AgEntry(String inputStream){
+		
 	}
-
 	/**
 	 * @return the date
 	 */
@@ -94,6 +102,21 @@ public class AgEntry {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	/**
+	 * @return the priority
+	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+	
 	
 	
 

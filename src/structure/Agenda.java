@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
+import javax.swing.JFrame;
+
 /**
  * 
  * @author Pieter
@@ -11,29 +13,23 @@ import java.util.Collection;
  * This class holds the main agenda and all the entries in the agenda.
  */
 public class Agenda {
+	private NewCalendar calendar;
+	private Person agendaHolder;
+	private NewFrame mainFrame;
 	/**
 	 * Initializes an empty agenda.
 	 */
 	public Agenda(){
-	
+		this("","",new NewDate());
 	}
-	/**
-	 * Initializes an agenda with a given collection of input entries.
-	 * @param input The array where all the agenda entries are stored.
-	 */
-	public Agenda(Collection<AgEntry> input){
-		this.entries.addAll(input);
+	public Agenda(String surName, String lastName, NewDate age){
+		this.calendar = new NewCalendar();
+		this.agendaHolder = new Person(surName, lastName, age);
+		this.mainFrame = new NewFrame(20);
+		this.mainFrame.setSize(300,100);
+		this.mainFrame.setVisible(true);
 	}
-	
-	/**
-	 * Returns a collection of entries in this agenda.
-	 */
-	public Collection<AgEntry> getEntries(){
-		ArrayList<AgEntry> tempEntries = new ArrayList<AgEntry>();
-		tempEntries.addAll(entries);
-		return tempEntries;
-	}
-	
+		
 	/**
 	 * Displays a list of all entries.
 	 */
@@ -44,4 +40,7 @@ public class Agenda {
 	 */
 	public void memoEntries(){/*TODO: Write memoEntries*/}
 	
+	public static void main(String[] args){
+		Agenda agenda = new Agenda();
+	}
 }
