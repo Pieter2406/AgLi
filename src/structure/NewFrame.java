@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -18,7 +19,11 @@ public class NewFrame extends JFrame {
 	private JTextField inputField;
 	private JTextArea inputArea;
 	private InputHandler inpHandler;
-	public NewFrame(int sizeX){
+	private JLabel dateLabel;
+	private JLabel subjectLabel;
+	private Agenda sourceAgenda;
+	
+	public NewFrame(int sizeX, Agenda source){
 		super("AgLi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -33,7 +38,14 @@ public class NewFrame extends JFrame {
 		add(inputArea);
 		inputArea.setEditable(false);
 		
+		dateLabel = new JLabel();
+		add(dateLabel);
+		
+		subjectLabel = new JLabel();
+		add(subjectLabel);
+		
 		inpHandler = new InputHandler(this);
+		this.sourceAgenda = source;
 	}
 
 	private class KeyHandler implements KeyListener{
@@ -63,6 +75,20 @@ public class NewFrame extends JFrame {
 
 		}
 	}
+
+	/**
+	 * @return the sourceAgenda
+	 */
+	public Agenda getSourceAgenda() {
+		return sourceAgenda;
+	}
+	/**
+	 * @param sourceAgenda the sourceAgenda to set
+	 */
+	public void setSourceAgenda(Agenda sourceAgenda) {
+		this.sourceAgenda = sourceAgenda;
+	}
+	
 	/**
 	 * @return the inputField
 	 */
@@ -87,5 +113,29 @@ public class NewFrame extends JFrame {
 	public void setInputArea(JTextArea inputArea) {
 		this.inputArea = inputArea;
 	}
+	/**
+	 * @return the dateLabel
+	 */
+	public JLabel getSubjectLabel() {
+		return subjectLabel;
+	}
+	/**
+	 * @param dateLabel the dateLabel to set
+	 */
+	public void setSubjectLabel(JLabel subjectLabel) {
+		this.subjectLabel = subjectLabel;
+	}
 	
+	/**
+	 * @return the dateLabel
+	 */
+	public JLabel getDateLabel() {
+		return dateLabel;
+	}
+	/**
+	 * @param dateLabel the dateLabel to set
+	 */
+	public void setDateLabel(JLabel dateLabel) {
+		this.dateLabel = dateLabel;
+	}
 }

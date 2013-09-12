@@ -1,10 +1,6 @@
 package structure;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 
-import javax.swing.JFrame;
 
 /**
  * 
@@ -22,10 +18,17 @@ public class Agenda {
 	public Agenda(){
 		this("","",new NewDate());
 	}
+	
+	/**
+	 * Initializes an agenda
+	 * @param surName
+	 * @param lastName
+	 * @param age
+	 */
 	public Agenda(String surName, String lastName, NewDate age){
 		this.calendar = new NewCalendar();
 		this.agendaHolder = new Person(surName, lastName, age);
-		this.mainFrame = new NewFrame(20);
+		this.mainFrame = new NewFrame(20, this);
 		this.mainFrame.setSize(300,100);
 		this.mainFrame.setVisible(true);
 	}
@@ -40,6 +43,10 @@ public class Agenda {
 	 */
 	public void memoEntries(){/*TODO: Write memoEntries*/}
 	
+	
+	/**
+	 * Test main method.
+	 */
 	public static void main(String[] args){
 		Agenda agenda = new Agenda();
 	}

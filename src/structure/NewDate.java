@@ -6,13 +6,13 @@ import java.util.Date;
  */
 public class NewDate implements Comparable {
 	
-	private String day;
+	private int day;
 	private String month;
 	private int year;
 	private Date date;
 	public NewDate(int date) {
 		this.date = new Date(date);
-		this.day = getDayOf(this.date.getDay());
+		this.day = this.date.getDay();
 		this.month = getMonthOf(this.date.getMonth());
 		this.year = this.date.getYear();
 	}
@@ -23,7 +23,7 @@ public class NewDate implements Comparable {
 	/**
 	 * @return the day
 	 */
-	public String getDay() {
+	public int getDay() {
 		return day;
 	}
 
@@ -36,10 +36,12 @@ public class NewDate implements Comparable {
 	/**
 	 * @param day the day to set
 	 */
-	public void setDay(String day) {
+
+	public void setDay(int day){
+		this.date.setDate(day);
 		this.day = day;
 	}
-
+	
 	/**
 	 * @return the month
 	 */
@@ -57,6 +59,11 @@ public class NewDate implements Comparable {
 	 */
 	public void setMonth(String month) {
 		this.month = month;
+		this.date.setMonth(getIntMonthOf(month));
+	}
+	public void setMonth(int month){
+		this.month = getMonthOf(month);
+		this.date.setMonth(month);
 	}
 
 	/**
@@ -119,7 +126,37 @@ public class NewDate implements Comparable {
 		}
 
 	}
+	
+	private int getIntDayOf(String inputDayName) {
+		switch(inputDayName){
+		case "Sunday": return 0;
+		case "Monday": return 1;
+		case "Tuesday": return 2;
+		case "Wednesday": return 3;
+		case "Thursday": return 4;
+		case "Friday": return 5;
+		case "Saturday": return 6;
+		default: return -1;
+		}
+	}
 
+	private int getIntMonthOf(String inputMonthName) {
+		switch (inputMonthName) {
+		case "January": return 0;
+		case "February": return 1;
+		case "March": return 2;
+		case "April": return 3;
+		case "May": return 4;
+		case "June": return 5;
+		case "July": return 6;
+		case "August": return 7;
+		case "September": return 8;
+		case "October": return 9;
+		case "November": return 10;
+		case "December": return 11;
+		default: return -1;
+		}
+	}
 	@Override
 	public int compareTo(Object o) {
 		return this.date.compareTo(((NewDate)o).getDate());

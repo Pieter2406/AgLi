@@ -59,7 +59,13 @@ public class AgEntry {
 	 * @param inputStream
 	 */
 	public AgEntry(String inputStream){
-		
+		//TODO: write AgEntry inputStream constructor
+	}
+	/**
+	 * 
+	 */
+	public AgEntry(){
+		this(null,"","",1);
 	}
 	/**
 	 * @return the date
