@@ -50,4 +50,47 @@ public class Agenda {
 	public static void main(String[] args){
 		Agenda agenda = new Agenda();
 	}
+
+	/**
+	 * @return the calendar
+	 */
+	public NewCalendar getCalendar() {
+		return calendar;
+	}
+
+	/**
+	 * @param calendar the calendar to set
+	 */
+	public void setCalendar(NewCalendar calendar) {
+		this.calendar = calendar;
+	}
+
+	/**
+	 * @return the agendaHolder
+	 */
+	public Person getAgendaHolder() {
+		return agendaHolder;
+	}
+
+	/**
+	 * @param agendaHolder the agendaHolder to set
+	 */
+	public void setAgendaHolder(Person agendaHolder) {
+		this.agendaHolder = agendaHolder;
+	}
+
+	/**
+	 * @return the mainFrame
+	 */
+	public NewFrame getMainFrame() {
+		return mainFrame;
+	}
+
+	/**
+	 * @param mainFrame the mainFrame to set
+	 */
+	public void setMainFrame(NewFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
+	
 }

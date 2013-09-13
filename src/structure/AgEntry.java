@@ -9,7 +9,7 @@ import java.util.Date;
  *
  * This class holds an entry of an agenda item.
  */
-public class AgEntry {
+public class AgEntry implements Comparable {
 	/**
 	 * The date of this agenda entry specified as a NewDate object.
 	 */
@@ -123,7 +123,29 @@ public class AgEntry {
 		this.priority = priority;
 	}
 	
-	
+	public String toString(){
+		String wholeEntry = new String();
+		wholeEntry = this.date.toString() + "<" + subject + "> (" + priority + ") [" + content + "]";
+		return wholeEntry;
+		
+	}
+
+	@Override
+	public int compareTo(Object other) {
+		if(this.getDate().compareTo(((AgEntry)other).getDate()) == 1){
+			return 1;
+		}else if(this.getDate().compareTo(((AgEntry)other).getDate()) == -1){
+			return -1;
+		}else{
+			if(this.getPriority() < ((AgEntry)other).priority){
+				return -1;
+			}else if(this.getPriority() > ((AgEntry)other).priority){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+	}
 	
 
 }

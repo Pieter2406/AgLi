@@ -19,9 +19,16 @@ public class NewFrame extends JFrame {
 	private JTextField inputField;
 	private JTextArea inputArea;
 	private InputHandler inpHandler;
+	
+	
+	private Agenda sourceAgenda;
+	
+	/*
+	 * Debug labels
+	 */
 	private JLabel dateLabel;
 	private JLabel subjectLabel;
-	private Agenda sourceAgenda;
+	private JLabel priorityLabel;
 	
 	public NewFrame(int sizeX, Agenda source){
 		super("AgLi");
@@ -43,6 +50,9 @@ public class NewFrame extends JFrame {
 		
 		subjectLabel = new JLabel();
 		add(subjectLabel);
+		
+		priorityLabel = new JLabel();
+		add(priorityLabel);
 		
 		inpHandler = new InputHandler(this);
 		this.sourceAgenda = source;
@@ -138,4 +148,18 @@ public class NewFrame extends JFrame {
 	public void setDateLabel(JLabel dateLabel) {
 		this.dateLabel = dateLabel;
 	}
+	
+	/**
+	 * @return the priorityLabel
+	 */
+	public JLabel getPriorityLabel() {
+		return priorityLabel;
+	}
+	/**
+	 * @param priorityLabel the priorityLabel to set
+	 */
+	public void setPriorityLabel(JLabel priorityLabel) {
+		this.priorityLabel = priorityLabel;
+	}
+	
 }

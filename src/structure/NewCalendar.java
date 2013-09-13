@@ -2,7 +2,9 @@
 package structure;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -13,6 +15,13 @@ import java.util.HashMap;
 
 public class NewCalendar {
 	/**
+	 * An arraylist that holds all the agenda entries.
+	 */
+	private ArrayList<AgEntry> allEntries;
+	private HashMap<Integer,HashMap<Integer,HashMap<Integer, ArrayList<AgEntry>>>> calendar;
+	private Collection<AgEntry> deletedEntries;
+	
+	/**
 	 * 
 	 */
 	public NewCalendar(){
@@ -21,13 +30,9 @@ public class NewCalendar {
 		this.deletedEntries = new ArrayList<AgEntry>();
 	}
 	
+	
 	/**
-	 * An arraylist that holds all the agenda entries.
-	 */
-	private ArrayList<AgEntry> allEntries;
-	private HashMap<Integer,HashMap<Integer,HashMap<Integer, ArrayList<AgEntry>>>> calendar;
-	private Collection<AgEntry> deletedEntries;
-	/**
+	 * The datastructure for the calendar.
 	 * @param year The given year
 	 * @return a HashMap with all the months of the given year and its entries.
 	 */
@@ -36,7 +41,7 @@ public class NewCalendar {
 	}
 	
 	/**
-	 * 
+	 * Return all the entries of a given month and year.
 	 * @param year	The given year
 	 * @param month	The given month
 	 * @return	a HashMap with all the agenda entries of the given year and month.
@@ -46,6 +51,7 @@ public class NewCalendar {
 	}
 	
 	/**
+	 * Return all the entries of a given day, month and year.
 	 * @param year	The given year
 	 * @param month	The given month
 	 * @param day	The given day
@@ -59,8 +65,9 @@ public class NewCalendar {
 	 * @param entry
 	 */
 	public void AddEntry(AgEntry entry){
-		GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).add(entry);
+		//GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).add(entry);
 		this.allEntries.add(entry);
+		Collections.sort(allEntries);
 	}
 	
 	/**
@@ -69,7 +76,7 @@ public class NewCalendar {
 	 */
 	public void DelEntry(AgEntry entry){
 		if(ContainsEntry(entry)){
-			GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).remove(entry);
+			//GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).remove(entry);
 			this.allEntries.remove(entry);
 			this.deletedEntries.add(entry);
 		}
@@ -96,8 +103,8 @@ public class NewCalendar {
 	private boolean ContainsEntry(AgEntry entry){
 		if(!this.allEntries.contains(entry)){
 			return false;
-		}else if(!GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).contains(entry)){
-			return false;
+		//}else if(!GetAgEntriesOf(entry.getDate().getYear(), entry.getDate().getIntMonth(), entry.getDate().getIntDay()).contains(entry)){
+		//	return false;
 		}else{
 			return true;
 		}
